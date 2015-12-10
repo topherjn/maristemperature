@@ -62,16 +62,22 @@ public class MainActivity extends ActionBarActivity {
     {
         return 9.0 / 5.0 * celsius + 32;
     }
-    private final SensorEventListener temperatureListener = new SensorEventListener(){
-        @Override
-        public void onAccuracyChanged(Sensor sensor, int accuracy) {}
-        @Override
-        public void onSensorChanged(SensorEvent event) {
-            double temperature = event.values[0];
+    private final SensorEventListener temperatureListener;
 
-            tempVal.setText("Temperature is: "+ celsiusToFahren(temperature));
+    {
+        temperatureListener = new SensorEventListener() {
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+            }
 
-        }
-    };
+            @Override
+            public void onSensorChanged(SensorEvent event) {
+                double temperature = event.values[0];
+
+                tempVal.setText(String.format("%d", (int) celsiusToFahren(temperature)));
+
+            }
+        };
+    }
 
 }
