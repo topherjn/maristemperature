@@ -62,6 +62,7 @@ public class MainActivity extends ActionBarActivity {
     {
         return 9.0 / 5.0 * celsius + 32;
     }
+
     private final SensorEventListener temperatureListener;
 
     {
